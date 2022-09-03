@@ -1,1 +1,1 @@
-# incubator-social-network
+# My way
