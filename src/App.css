@@ -1,38 +1,39 @@
 :root {
-	--text-color: #000
+  --text-color: #000
 }
 
 * {
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	text-decoration: none;
-	color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration: none;
+  color: var(--text-color);
 }
 
 
 .header-wrapper {
-	display: flex;
-
+  display: flex;
+  gap: 20px;
+  
 }
 
 .header-wrapper img {
-	width: 50px;
-	height: 50px;
+  width: 50px;
+  height: 50px;
 }
 
 main {
-	display: grid;
-	grid-template-columns: repeat(2, 1fr);
-	grid-template-rows: 1fr;
-	grid-column-gap: 10px;
-	grid-row-gap: 0;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 1fr;
+  grid-column-gap: 20px;
+  grid-row-gap: 0;
 }
 
 main nav {
-	width: 10vw;
+  width: 10vw;
 }
 
 main .content-body {
-	width: 90vw;
+  width: 90vw;
 }
