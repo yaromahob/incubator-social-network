@@ -1,5 +1,5 @@
 import React from 'react';
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route} from "react-router-dom";
 
 import './App.css';
 import Header from "./components/Header";
@@ -17,20 +17,16 @@ const App: React.FC = () => {
         <Header/>
         <main>
           <Navigation/>
-          <Switch>
-            <Route exact path="/profile">
-              <Profile/>
-            </Route>
-            <Route path="/messages">
-              <Messages/>
-            </Route>
-            <Route path="/news">
-              <News/>
-            </Route>
-            <Route path="/music">
-              <Music/>
-            </Route>
-          </Switch>
+          
+          <Route exact path="/profile" render={() => <Profile/>}/>
+          
+          <Route path="/messages" render={() => <Messages/>}/>
+          
+          <Route path="/news" render={() => <News/>}/>
+          
+          <Route path="/music" render={() => <Music/>}/>
+        
+        
         </main>
         <footer>footer yaromahob</footer>
       </div>
