@@ -10,16 +10,31 @@
   color: var(--text-color);
 }
 
+.app-wrapper {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 100vh;
+  box-shadow: 0 0 19px 4px rgba(34, 60, 80, 0.2);
+}
 
-.header-wrapper {
+
+header {
   display: flex;
-  gap: 20px;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 15px 30px 15px;
+  padding-top: 15px;
   
 }
 
-.header-wrapper img {
+header img {
   width: 50px;
   height: 50px;
+}
+
+.logo-wrapper {
+  display: flex;
+  gap: 20px;
 }
 
 main {
@@ -28,6 +43,7 @@ main {
   grid-template-rows: 1fr;
   grid-column-gap: 20px;
   grid-row-gap: 0;
+  min-height: calc(90vh - 40px);
 }
 
 main nav {
@@ -35,5 +51,9 @@ main nav {
 }
 
 main .content-body {
-  width: 90vw;
+  width: 70vw;
+}
+
+footer {
+  height: 40px;
 }

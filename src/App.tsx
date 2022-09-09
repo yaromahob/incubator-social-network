@@ -17,16 +17,12 @@ const App: React.FC = () => {
         <Header/>
         <main>
           <Navigation/>
-          
-          <Route exact path="/profile" render={() => <Profile/>}/>
-          
-          <Route path="/messages" render={() => <Messages/>}/>
-          
-          <Route path="/news" render={() => <News/>}/>
-          
-          <Route path="/music" render={() => <Music/>}/>
-        
-        
+          <div className="content-body">
+            <Route exact path="/profile" render={() => <Profile/>}/>
+            <Route path="/messages" render={() => <Messages/>}/>
+            <Route path="/news" render={() => <News/>}/>
+            <Route path="/music" render={() => <Music/>}/>
+          </div>
         </main>
         <footer>footer yaromahob</footer>
       </div>
