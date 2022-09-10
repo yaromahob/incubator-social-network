@@ -18,6 +18,7 @@ const App: React.FC = () => {
         <main>
           <Navigation/>
           <div className="content-body">
+            <Route exact path="/" render={() => <Profile/>}/>
             <Route exact path="/profile" render={() => <Profile/>}/>
             <Route path="/messages" render={() => <Messages/>}/>
             <Route path="/news" render={() => <News/>}/>
