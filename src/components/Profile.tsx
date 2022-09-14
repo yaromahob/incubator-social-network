@@ -21,8 +21,13 @@ const Profile: React.FC = () => {
         </ul>
       </div>
       <div>
+        <div>
+          <p>Writing your post</p>
+          <input type="text"/>
+          <button>Send</button>
+        </div>
         <div>Posts:</div>
-        <div></div>
+        <div className='posts-container'></div>
       </div>
     </div>
   );
