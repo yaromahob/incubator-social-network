@@ -1,0 +1,44 @@
+.dialogs {
+  margin: 20px;
+}
+
+.users {
+  position: relative;
+}
+
+.users, .messages {
+  margin: 20px;
+}
+
+.users ul li {
+  position: relative;
+}
+
+.users ul li, .messages p {
+  margin: 10px;
+}
+
+
+.dialogsWrapper {
+  display: grid;
+  grid-template-columns: 15fr 85fr;
+}
+
+.users:after {
+  content: '';
+  position: absolute;
+  border-right: 2px solid #000000;
+  height: 100%;
+  top: 0;
+  right: -20px;
+}
+
+
+.users .active:after {
+  content: '';
+  position: absolute;
+  border-right: 2px solid #000000;
+  height: 80%;
+  top: 10%;
+  right: 40px;
+}

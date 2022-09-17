@@ -3,7 +3,7 @@ import React from 'react';
 const Music: React.FC = () => {
   return (
     <div>
-      Music
+      <h3>Music</h3>
     </div>
   );
 };

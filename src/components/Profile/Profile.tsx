@@ -1,5 +1,6 @@
 import React from 'react';
-import '../styles/Profile.css'
+import './Profile.css'
+import Post from "../Post/Post";
 
 
 const Profile: React.FC = () => {
@@ -20,6 +21,8 @@ const Profile: React.FC = () => {
           <li>Sex: Man</li>
         </ul>
       </div>
+      
+      
       <div>
         <div>
           <p>Writing your post</p>
@@ -27,7 +30,10 @@ const Profile: React.FC = () => {
           <button>Send</button>
         </div>
         <div>Posts:</div>
-        <div className='posts-container'></div>
+        <div className='posts-container'>
+          <Post message='Hello, how are you?' likesCount={0}/>
+          <Post message="It's my first post" likesCount={23}/>
+        </div>
       </div>
     </div>
   );

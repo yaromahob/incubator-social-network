@@ -1,0 +1,22 @@
+.postWrapper {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 20px;
+}
+
+.likes-wrapper img {
+  width: 13px;
+  padding-right: 5px;
+  
+}
+
+.likes-wrapper img:hover {
+  cursor: pointer;
+}
+
+.postWrapper .user-info img {
+  width: 40px;
+  height: 40px;
+  margin: 0;
+}
