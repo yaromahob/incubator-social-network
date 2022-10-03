@@ -1,46 +1,45 @@
 import React from 'react';
-import {TUserData, TUserDataType} from "../Messages/TUserData";
+
 import {Link} from "react-router-dom";
 import './dialogs.css'
+import {TUserData} from "../../redux/state";
+import {TUserDataType} from "../Messages/Messages";
 
-const Dialogs = (props: TUserDataType) => {
-  const [activeUser, setActiveUser] = React.useState('')
-  
-  const onChangeActiveUser = (index: number) => {
-    setActiveUser(props.userData[index].directory)
-  }
-  
-  return (
-    <div className='dialogs'>
-      <div>
-        <h3>Dialogs:</h3>
-      </div>
-      <div className="dialogsWrapper">
-        <div className="users">
-          <ul>
-            {props.userData.map((obj: TUserData, index: number) => {
-              return (
-                <li key={index}>
-                  <Link
-                    className={activeUser === obj.directory ? 'active' : ''}
-                    onClick={() => onChangeActiveUser(index)}
-                    to={'/messages' + obj.directory}>
-                    {obj.user}
-                  </Link>
-                </li>)
-            })}
-          </ul>
-        </div>
-        <div className="messages">
-          <p>One One One</p>
-          <p>Two Two Two</p>
-          <p>Three Three Three</p>
-          <p>Four Four Four</p>
-          <p>Five Five Five</p>
-        </div>
-      </div>
-    </div>
-  );
+const Dialogs: React.FC<TUserDataType> = (props) => {
+	const [activeUser, setActiveUser] = React.useState('')
+
+	const onChangeActiveUser = (index: number) => {
+		setActiveUser(props.userData[index].directory)
+	}
+	const messages = props.userMessages.map(m => <p key={m.id}>{m.message}</p>)
+	const dialogs = props.userData.map((obj: TUserData, index: number) => {
+		return (
+			<li key={index}>
+				<Link
+					className={activeUser === obj.directory ? 'active' : ''}
+					onClick={() => onChangeActiveUser(index)}
+					to={'/messages' + obj.directory}>
+					{obj.user}
+				</Link>
+			</li>)
+	})
+	return (
+		<div className='dialogs'>
+			<div>
+				<h3>Dialogs:</h3>
+			</div>
+			<div className="dialogsWrapper">
+				<div className="users">
+					<ul>
+						{dialogs}
+					</ul>
+				</div>
+				<div className="messages">
+					{messages}
+				</div>
+			</div>
+		</div>
+	);
 };
 
 export default Dialogs;
