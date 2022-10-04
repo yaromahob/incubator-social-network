@@ -1,4 +1,5 @@
 import {v1} from 'uuid'
+import {rerenderEntireTree} from "../rerender";
 
 export type TUserData = {
 	id: string
@@ -94,4 +95,23 @@ export const state = {
 			},
 		]
 	}
+}
+export const newPostCallback = (post: string) => {
+	const newPost = {
+		id: v1(),
+		message: post,
+		likesCount: 0
+	}
+	state.profilePage.userPosts.push(newPost)
+	rerenderEntireTree(state)
+}
+
+export const addLikeCallback = (id: string) => {
+	state.profilePage.userPosts.map(p => {
+		if (p.id === id) {
+			p.likesCount++
+			console.log(p)
+		}
+	})
+	rerenderEntireTree(state)
 }
