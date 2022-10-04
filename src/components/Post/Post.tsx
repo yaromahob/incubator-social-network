@@ -2,11 +2,16 @@ import React from 'react';
 import './post.css'
 
 type TPostPropsType = {
+	id: string
 	message: string
 	likesCount: number
+	addLikeCallback: (id: string) => void
 }
 
 const Post = (props: TPostPropsType) => {
+	const addLikeHandler = () => {
+		props.addLikeCallback(props.id)
+	}
 	return (
 		<div className='postWrapper'>
 			<div className='user-info'>
@@ -16,7 +21,7 @@ const Post = (props: TPostPropsType) => {
 			</div>
 			{props.message}
 			<div className='likes-wrapper'>
-				<img src="https://www.svgrepo.com/show/84195/like.svg" alt="likes image"/>
+				<img onClick={addLikeHandler} src="https://www.svgrepo.com/show/84195/like.svg" alt="likes image"/>
 				{props.likesCount}
 			</div>
 		</div>

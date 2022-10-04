@@ -15,6 +15,7 @@ const Dialogs: React.FC<TUserDataType> = (props) => {
 	const dialogs = props.userData.map((obj: TUserData, index: number) => {
 		return (
 			<li key={index}>
+				<img src={obj.avatar} alt="avatar"/>
 				<Link
 					className={activeUser === obj.directory ? 'active' : ''}
 					onClick={() => onChangeActiveUser(index)}
