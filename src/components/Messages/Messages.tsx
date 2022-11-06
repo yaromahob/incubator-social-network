@@ -1,6 +1,6 @@
 import React from 'react';
+import {TUserData, TUserMessages} from '../../redux/reducers/messages-reducer';
 import Dialogs from "../Dialogs/Dialogs";
-import {TUserData, TUserMessages} from "../../redux/state";
 
 export type TUserDataType = {
 	userData: TUserData[]

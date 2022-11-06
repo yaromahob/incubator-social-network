@@ -2,8 +2,8 @@ import React from 'react';
 
 import {Link} from "react-router-dom";
 import './dialogs.css'
-import {TUserData} from "../../redux/state";
 import {TUserDataType} from "../Messages/Messages";
+import { TUserData } from '../../redux/reducers/messages-reducer';
 
 const Dialogs: React.FC<TUserDataType> = (props) => {
 	const [activeUser, setActiveUser] = React.useState('')
