@@ -1,4 +1,3 @@
-
 export type TSidebar = {
   sidebarMenu: TSidebarMenu[]
 }
@@ -8,11 +7,15 @@ export type TSidebarMenu = {
   directory: string
 }
 
-const initialState: TSidebar =  {
+const initialState: TSidebar = {
   sidebarMenu: [
     {
       folder: 'Profile',
       directory: '/profile'
+    },
+    {
+      folder: 'Users',
+      directory: '/users'
     },
     {
       folder: 'News',
@@ -27,8 +30,8 @@ const initialState: TSidebar =  {
       directory: '/music'
     },
   ]
-}
+};
 
-export const sidebarReducer = (state:any = initialState, action:any): TSidebar => {
-  return state
-}
+export const sidebarReducer = (state: any = initialState, action: any): TSidebar => {
+  return state;
+};
