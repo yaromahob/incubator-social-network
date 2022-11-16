@@ -11,21 +11,36 @@ export type UserType = {
 }
 export type UsersType = {
   items: Array<UserType>
+  currentPage: number
+  pageRenderUserSize: number
+  totalUserCount: number
 }
+
 let initialState: UsersType = {
-  items: []
-  
+  items: [],
+  currentPage: 1,
+  pageRenderUserSize: 9,
+  totalUserCount: 0
 };
 
-export const usersReducer = (state: UsersType = initialState, action: UsersActionType) => {
+export const usersReducer = (state: UsersType = initialState, action: UsersActionType): UsersType => {
   
   switch (action.type) {
     case "SET-USERS": {
       return {
         ...state,
-        items: action.payload
+        items: action.payload.users,
+        totalUserCount: action.payload.totalUsersCount
       };
     }
+    
+    case 'CHANGE-CURRENT-PAGE': {
+      return {
+        ...state,
+        currentPage: action.payload.pageNumber
+      };
+    }
+    
     case "FOLLOW-FRIEND": {
       return {
         ...state,

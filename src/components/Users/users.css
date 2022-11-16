@@ -62,3 +62,20 @@
   
   
 }
+
+.items-wrapper {
+  margin-top: 20px;
+}
+
+.items-wrapper .paginationPage ul {
+  display: flex;
+  gap: 15px;
+}
+
+.items-wrapper .paginationPage ul li {
+  cursor: pointer;
+}
+
+.items-wrapper .paginationPage ul .selected {
+  font-weight: bold;
+}
