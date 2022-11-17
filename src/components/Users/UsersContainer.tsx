@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
-import {Dispatch} from "redux";
 import {
   changeUsersPageAC,
   followFriendAC,
@@ -10,33 +9,32 @@ import {
 } from "../../redux/actions/usersAC";
 import axios from "axios";
 import Users from "./Users";
-import {mapDispatchToPropsType, UsersClassPropsType} from './types/TUsersContainer';
-import {UsersType, UserType} from '../../redux/reducers/types/TUsers_reducer';
-import {UsersActionType} from '../../redux/actions/types/TUsersAC';
+import {UsersClassPropsType} from './types/TUsersContainer';
+import {UsersType} from '../../redux/reducers/types/TUsers_reducer';
 
 class UserContainer extends React.Component<UsersClassPropsType> {
   
   componentDidMount() {
-    this.props.toggleIsFetchingCallback(true);
+    this.props.toggleIsFetchingAC(true);
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageRenderUserSize}`).then(response => {
-      this.props.setUsersCallback(response.data.items, response.data.totalCount);
-      this.props.toggleIsFetchingCallback(false);
+      this.props.setUsersAC(response.data.items, response.data.totalCount);
+      this.props.toggleIsFetchingAC(false);
     });
   }
   
   
   followHandler = (id: number) => {
-    this.props.followFriendCallback(id);
+    this.props.followFriendAC(id);
   };
   unFollowHandler = (id: number) => {
-    this.props.unFollowFriendCallback(id);
+    this.props.unFollowFriendAC(id);
   };
   onChangePage = (pageNumber: number) => {
-    this.props.onChangePageCallback(pageNumber);
-    this.props.toggleIsFetchingCallback(true);
+    this.props.changeUsersPageAC(pageNumber);
+    this.props.toggleIsFetchingAC(true);
     axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageRenderUserSize}`).then(response => {
-      this.props.setUsersCallback(response.data.items, response.data.totalCount);
-      this.props.toggleIsFetchingCallback(false);
+      this.props.setUsersAC(response.data.items, response.data.totalCount);
+      this.props.toggleIsFetchingAC(false);
     });
     
   };
@@ -66,26 +64,12 @@ const mapStateToProps = (state: AppStateType): UsersType => {
 };
 
 
-const mapDispatchToProps = (dispatch: Dispatch<UsersActionType>): mapDispatchToPropsType => {
-  return {
-    setUsersCallback: (users: Array<UserType>, totalUsersCount: number) => {
-      dispatch(setUsersAC(users, totalUsersCount));
-    },
-    followFriendCallback: (userID: number) => {
-      dispatch(followFriendAC(userID));
-    },
-    unFollowFriendCallback: (userID: number) => {
-      dispatch(unFollowFriendAC(userID));
-    },
-    onChangePageCallback: (pageNumber: number) => {
-      dispatch(changeUsersPageAC(pageNumber));
-    },
-    toggleIsFetchingCallback: (fetchResult: boolean) => {
-      dispatch(toggleIsFetchingAC(fetchResult));
-    }
-  };
-};
-
-const UsersContainer = connect(mapStateToProps, mapDispatchToProps)(UserContainer);
+const UsersContainer = connect(mapStateToProps, {
+  setUsersAC,
+  followFriendAC,
+  unFollowFriendAC,
+  changeUsersPageAC,
+  toggleIsFetchingAC
+})(UserContainer);
 
 export default UsersContainer;

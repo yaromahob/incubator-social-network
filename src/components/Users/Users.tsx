@@ -25,6 +25,15 @@ const Users: React.FC<UsersComponentType> = ({
     pages.push(i);
   }
   
+  const followHandlerHandler = (userID: number) => {
+    followHandler(userID);
+  };
+  
+  const unFollowHandlerHandler = (userID: number) => {
+    unFollowHandler(userID);
+  };
+  
+  
   return (
     <div>
       <h3>Users</h3>
@@ -44,22 +53,30 @@ const Users: React.FC<UsersComponentType> = ({
         <div className="users-wrapper">
           
           
-          {items.map((u) => <div className="user" key={u.id}>
-              <div className="userName">
-                <img src={u.photos.small === null
-                  ? 'https://www.svgrepo.com/show/57853/avatar.svg'
-                  : u.photos.small}
-                     alt="AVATAR"/>
-                <h3>{u.name}</h3>
-                {u.followed
-                  ? <button className="unfollow" onClick={() => unFollowHandler(u.id)}>Unfollow</button>
-                  : <button className="follow" onClick={() => followHandler(u.id)}>Follow</button>}
-              </div>
-              <div className="aboutPerson">
-                <p>{u.status}</p>
-              </div>
-            </div>
+          {items.map((u) => {
+              
+              
+              return (
+                <div className="user" key={u.id}>
+                  <div className="userName">
+                    <img src={u.photos.small === null
+                      ? 'https://www.svgrepo.com/show/57853/avatar.svg'
+                      : u.photos.small}
+                         alt="AVATAR"/>
+                    <h3>{u.name}</h3>
+                    {u.followed
+                      ? <button className="unfollow" onClick={() => unFollowHandlerHandler(u.id)}>Unfollow</button>
+                      : <button className="follow" onClick={() => followHandlerHandler(u.id)}>Follow</button>}
+                  </div>
+                  <div className="aboutPerson">
+                    <p>{u.status}</p>
+                  </div>
+                </div>
+              );
+            }
           )}
+        
+        
         </div>
       </div>
     </div>);
