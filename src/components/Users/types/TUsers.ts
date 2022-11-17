@@ -8,4 +8,5 @@ export type UsersComponentType = {
   onChangePage: (pageNumber: number) => void
   unFollowHandler: (userID: number) => void
   followHandler: (userID: number) => void
+  isFetching: boolean
 }

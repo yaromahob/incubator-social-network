@@ -6,5 +6,6 @@ export type mapDispatchToPropsType = {
   followFriendCallback: (userID: number) => void
   unFollowFriendCallback: (userID: number) => void
   onChangePageCallback: (number: number) => void
+  toggleIsFetchingCallback: (fetchResult: boolean) => void
 }
 export type UsersClassPropsType = mapDispatchToPropsType & UsersType

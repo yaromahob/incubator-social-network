@@ -2,6 +2,7 @@ import React from 'react';
 import {v1} from "uuid";
 import {UsersComponentType} from './types/TUsers';
 import './users.css';
+import Preloader from "../common/Preloader/Preloader";
 
 
 const Users: React.FC<UsersComponentType> = ({
@@ -11,7 +12,8 @@ const Users: React.FC<UsersComponentType> = ({
                                                pageRenderUserSize,
                                                onChangePage,
                                                unFollowHandler,
-                                               followHandler
+                                               followHandler,
+                                               isFetching
                                              }) => {
   
   // чтобы не высчитывать 2000+ страниц временная заглушка все USERS сидят в totalUserCount
@@ -23,25 +25,26 @@ const Users: React.FC<UsersComponentType> = ({
     pages.push(i);
   }
   
-  return <div>
-    
-    <h3>Users</h3>
-    
-    <div className="items-wrapper">
-      <div className="paginationPage">
-        <ul>
-          {pages.map(p => <li
-            key={v1()}
-            className={activePage === p ? 'selected' : ''}
-            onClick={() => onChangePage(p)}
-          >{p}</li>)}
-        </ul>
-      </div>
-      <div className="users-wrapper">
+  return (
+    <div>
+      <h3>Users</h3>
+      
+      <div className="items-wrapper">
         
-        
-        {items.map((u) => {
-            return <div className="user" key={u.id}>
+        <div className="paginationPage">
+          <ul>
+            {pages.map(p => <li
+              key={v1()}
+              className={activePage === p ? 'selected' : ''}
+              onClick={() => onChangePage(p)}
+            >{p}</li>)}
+          </ul>
+          {isFetching ? <Preloader/> : null}
+        </div>
+        <div className="users-wrapper">
+          
+          
+          {items.map((u) => <div className="user" key={u.id}>
               <div className="userName">
                 <img src={u.photos.small === null
                   ? 'https://www.svgrepo.com/show/57853/avatar.svg'
@@ -55,13 +58,11 @@ const Users: React.FC<UsersComponentType> = ({
               <div className="aboutPerson">
                 <p>{u.status}</p>
               </div>
-            </div>;
-          }
-        )}
+            </div>
+          )}
+        </div>
       </div>
-    
-    </div>
-  </div>;
+    </div>);
 };
 
 export default Users;

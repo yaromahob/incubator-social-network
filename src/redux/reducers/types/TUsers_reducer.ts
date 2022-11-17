@@ -11,4 +11,5 @@ export type UsersType = {
   currentPage: number
   pageRenderUserSize: number
   totalUserCount: number
+  isFetching: boolean
 }

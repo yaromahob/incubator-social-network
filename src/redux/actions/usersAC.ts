@@ -1,10 +1,11 @@
 import {UserType} from "../reducers/types/TUsers_reducer";
 
 
-const SET_USERS = 'SET-USERS';
-const FOLLOW_FRIEND = 'FOLLOW-FRIEND';
-const UNFOLLOW_FRIEND = 'UNFOLLOW-FRIEND';
-const CHANGE_CURRENT_PAGE = 'CHANGE-CURRENT-PAGE';
+export const SET_USERS = 'SET-USERS';
+export const FOLLOW_FRIEND = 'FOLLOW-FRIEND';
+export const UNFOLLOW_FRIEND = 'UNFOLLOW-FRIEND';
+export const CHANGE_CURRENT_PAGE = 'CHANGE-CURRENT-PAGE';
+export const TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING";
 
 export const setUsersAC = (users: Array<UserType>, totalUsersCount: number) => {
   return {
@@ -35,5 +36,12 @@ export const unFollowFriendAC = (id: number) => {
   return {
     type: UNFOLLOW_FRIEND,
     payload: id
+  } as const;
+};
+
+export const toggleIsFetchingAC = (fetchResult: boolean) => {
+  return {
+    type: TOGGLE_IS_FETCHING,
+    payload: fetchResult
   } as const;
 };
