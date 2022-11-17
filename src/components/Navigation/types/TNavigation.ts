@@ -1,4 +1,4 @@
-import {TSidebarMenu} from "../../../redux/reducers/sidebar-reducer";
+import {TSidebarMenu} from "../../../redux/reducers/types/TSidebar_reducer";
 
 export type SidebarMenuPropsType = {
   sidebarMenu: TSidebarMenu[]

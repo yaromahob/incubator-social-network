@@ -7,12 +7,12 @@ import {
   followFriendAC,
   setUsersAC,
   unFollowFriendAC,
-  UsersActionType
 } from "../../redux/actions/usersAC";
-import {UsersType, UserType} from "../../redux/reducers/users-reducer";
 import axios from "axios";
 import Users from "./Users";
 import {mapDispatchToPropsType, UsersClassPropsType} from './types/TUsersContainer';
+import {UsersType, UserType} from '../../redux/reducers/types/TUsers_reducer';
+import {UsersActionType} from '../../redux/actions/types/TUsersAC';
 
 class UserContainer extends React.Component<UsersClassPropsType> {
   

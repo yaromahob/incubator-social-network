@@ -1,6 +1,4 @@
 import React from 'react';
-import {TUserData} from '../../Dataset/users';
-import {TUserMessages} from '../../redux/reducers/messages-reducer';
 import Dialogs from "../Dialogs/Dialogs";
 import {StateUserDataType} from './types/TMessages';
 

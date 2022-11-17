@@ -1,4 +1,5 @@
-import {UsersType, UserType} from "../../../redux/reducers/users-reducer";
+import {UsersType, UserType} from "../../../redux/reducers/types/TUsers_reducer";
+
 
 export type mapDispatchToPropsType = {
   setUsersCallback: (users: Array<UserType>, totalUsersCount: number) => void

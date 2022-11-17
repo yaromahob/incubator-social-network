@@ -1,4 +1,4 @@
-import {TUserPost} from "../../../redux/reducers/profile-reducer";
+import {TUserPost} from "../../../redux/reducers/types/TProfile_reducer";
 
 export type TStatePostType = {
   postUser: TUserPost[]

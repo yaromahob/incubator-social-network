@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-import {TSidebarMenu} from '../../redux/reducers/sidebar-reducer';
+import {TSidebarMenu} from '../../redux/reducers/types/TSidebar_reducer';
 import './Navigation.css';
 import {SidebarMenuPropsType} from './types/TNavigation';
 
