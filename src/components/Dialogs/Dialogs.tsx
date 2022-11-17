@@ -2,10 +2,10 @@ import React from 'react';
 
 import {Link} from "react-router-dom";
 import './dialogs.css';
-import {TUserDataType} from "../Messages/Messages";
+import {UserDataType} from "../Messages/types/TMessages";
 import {TUserData} from '../../Dataset/users';
 
-const Dialogs: React.FC<TUserDataType> = (props) => {
+const Dialogs: React.FC<UserDataType> = (props) => {
   const [activeUser, setActiveUser] = React.useState('');
   
   const onChangeActiveUser = (index: number) => {

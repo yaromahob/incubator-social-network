@@ -1,18 +1,8 @@
 import React from 'react';
 import {v1} from "uuid";
+import {UsersComponentType} from './types/TUsers';
 import './users.css';
 
-import {UserType} from "../../redux/reducers/users-reducer";
-
-type UsersComponentType = {
-  items: Array<UserType>
-  totalUserCount: number
-  currentPage: number
-  pageRenderUserSize: number
-  onChangePage: (pageNumber: number) => void
-  unFollowHandler: (userID: number) => void
-  followHandler: (userID: number) => void
-}
 
 const Users: React.FC<UsersComponentType> = ({
                                                items,
@@ -50,7 +40,7 @@ const Users: React.FC<UsersComponentType> = ({
       <div className="users-wrapper">
         
         
-        {items.map((u: UserType) => {
+        {items.map((u) => {
             return <div className="user" key={u.id}>
               <div className="userName">
                 <img src={u.photos.small === null

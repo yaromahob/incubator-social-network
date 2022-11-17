@@ -1,11 +1,5 @@
-import {UsersType, UserType} from "../reducers/users-reducer";
+import {UserType} from "../reducers/types/TUsers_reducer";
 
-export type UsersActionType = FollowFriendACType | UnFollowFriendACType | SetUsersACType | ChangeUsersPageAC
-
-type FollowFriendACType = ReturnType<typeof followFriendAC>
-type UnFollowFriendACType = ReturnType<typeof unFollowFriendAC>
-type SetUsersACType = ReturnType<typeof setUsersAC>
-type ChangeUsersPageAC = ReturnType<typeof changeUsersPageAC>
 
 const SET_USERS = 'SET-USERS';
 const FOLLOW_FRIEND = 'FOLLOW-FRIEND';

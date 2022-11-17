@@ -12,6 +12,7 @@ import {
 import {UsersType, UserType} from "../../redux/reducers/users-reducer";
 import axios from "axios";
 import Users from "./Users";
+import {mapDispatchToPropsType, UsersClassPropsType} from './types/TUsersContainer';
 
 class UserContainer extends React.Component<UsersClassPropsType> {
   
@@ -53,13 +54,6 @@ class UserContainer extends React.Component<UsersClassPropsType> {
 }
 
 
-export type mapDispatchToPropsType = {
-  setUsersCallback: (users: Array<UserType>, totalUsersCount: number) => void
-  followFriendCallback: (userID: number) => void
-  unFollowFriendCallback: (userID: number) => void
-  onChangePageCallback: (number: number) => void
-}
-
 const mapStateToProps = (state: AppStateType): UsersType => {
   return {
     items: state.usersPage.items,
@@ -69,7 +63,6 @@ const mapStateToProps = (state: AppStateType): UsersType => {
   };
 };
 
-export type UsersClassPropsType = mapDispatchToPropsType & UsersType
 
 const mapDispatchToProps = (dispatch: Dispatch<UsersActionType>): mapDispatchToPropsType => {
   return {

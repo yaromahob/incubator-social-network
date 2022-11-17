@@ -1,20 +1,6 @@
-import {UsersActionType} from "../actions/usersAC";
+import {UsersActionType} from "../actions/types/TUsersAC";
+import {UsersType} from "./types/TUsers_reducer";
 
-
-export type UserType = {
-  name: string
-  id: number
-  uniqueUrlName: null | string
-  photos: { small: string, large: string }
-  status: null | string
-  followed: boolean
-}
-export type UsersType = {
-  items: Array<UserType>
-  currentPage: number
-  pageRenderUserSize: number
-  totalUserCount: number
-}
 
 let initialState: UsersType = {
   items: [],

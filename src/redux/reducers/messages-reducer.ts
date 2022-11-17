@@ -1,15 +1,7 @@
 import {v1} from "uuid";
-import {TUserData, USERS_DATA} from "../../Dataset/users";
+import {USERS_DATA} from "../../Dataset/users";
+import {TMessagesPage} from "./types/TMessages_reducer";
 
-
-export type TUserMessages = {
-  id: string
-  message: string
-}
-export type TMessagesPage = {
-  userData: TUserData[]
-  userMessages: TUserMessages[]
-}
 
 const initialState: TMessagesPage = {
   userData: [...USERS_DATA],

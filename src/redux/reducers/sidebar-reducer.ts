@@ -1,11 +1,5 @@
-export type TSidebar = {
-  sidebarMenu: TSidebarMenu[]
-}
+import {TSidebar} from "./types/TSidebar_reducer";
 
-export type TSidebarMenu = {
-  folder: string
-  directory: string
-}
 
 const initialState: TSidebar = {
   sidebarMenu: [

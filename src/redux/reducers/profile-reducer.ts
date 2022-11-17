@@ -1,16 +1,7 @@
 import {v1} from "uuid";
-import {ProfileActionType} from "../actions/profileAC";
+import {ProfileActionType} from "../actions/types/TProfileAC";
+import {TProfilePage} from "./types/TProfile_reducer";
 
-export type TProfilePage = {
-  userPosts: TUserPost[]
-  newPost: string
-}
-
-export type TUserPost = {
-  id: string
-  message: string
-  likesCount: number
-}
 
 const initialState: TProfilePage = {
   userPosts: [

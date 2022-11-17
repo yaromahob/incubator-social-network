@@ -2,17 +2,10 @@ import React from 'react';
 import {TUserData} from '../../Dataset/users';
 import {TUserMessages} from '../../redux/reducers/messages-reducer';
 import Dialogs from "../Dialogs/Dialogs";
-
-export type TUserDataType = {
-  userData: TUserData[]
-  userMessages: TUserMessages[]
-}
-type TStateUserData = {
-  state: TUserDataType
-}
+import {StateUserDataType} from './types/TMessages';
 
 
-const Messages: React.FC<TStateUserData> = (props) => {
+const Messages: React.FC<StateUserDataType> = (props) => {
   return (
     <div>
       <div>
