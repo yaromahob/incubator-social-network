@@ -3,6 +3,7 @@ import {v1} from "uuid";
 import {UsersComponentType} from './types/TUsers';
 import './users.css';
 import Preloader from "../common/Preloader/Preloader";
+import {NavLink} from "react-router-dom";
 
 
 const Users: React.FC<UsersComponentType> = ({
@@ -59,11 +60,13 @@ const Users: React.FC<UsersComponentType> = ({
               return (
                 <div className="user" key={u.id}>
                   <div className="userName">
-                    <img src={u.photos.small === null
-                      ? 'https://www.svgrepo.com/show/57853/avatar.svg'
-                      : u.photos.small}
-                         alt="AVATAR"/>
-                    <h3>{u.name}</h3>
+                    <NavLink to={`/profile/${u.id}`}>
+                      <img src={u.photos.small === null
+                        ? 'https://www.svgrepo.com/show/57853/avatar.svg'
+                        : u.photos.small}
+                           alt="AVATAR"/>
+                      <h3>{u.name}</h3>
+                    </NavLink>
                     {u.followed
                       ? <button className="unfollow" onClick={() => unFollowHandlerHandler(u.id)}>Unfollow</button>
                       : <button className="follow" onClick={() => followHandlerHandler(u.id)}>Follow</button>}

@@ -1,20 +1,21 @@
 import React, {ChangeEvent} from 'react';
 import './Profile.css';
 import Post from "../Post/Post";
-import {TStatePostType} from './types/TProfile';
+import ProfileInfo from "./ProfileInfo";
+import {TProfile} from "./types/TProfile";
 
 
-const Profile: React.FC<TStatePostType> = (props) => {
+const Profile: React.FC<TProfile> = (props) => {
   const postHandler = (e: ChangeEvent<HTMLInputElement>) => {
-    props.updatePostCallback(e.target.value);
+    props.updatePostTextAC(e.target.value);
   };
   
   const addPostHandler = () => {
-    props.addPostCallback(props.newPost);
+    props.addPostAC(props.newPost);
   };
   
   const addLikeHandler = (id: string) => {
-    props.addLikeCallback(id);
+    props.addLikePostAC(id);
   };
   
   return (
@@ -23,14 +24,7 @@ const Profile: React.FC<TStatePostType> = (props) => {
         <h3>Profile</h3>
       </div>
       <div className="user-info">
-        <div><img src="https://www.svgrepo.com/show/5125/avatar.svg" alt="avatar svg"/></div>
-        <ul>
-          <li>Status: I'm working on it</li>
-          <li>Soname: Ivanov</li>
-          <li>Name: Ivan</li>
-          <li>Age: 88</li>
-          <li>Sex: Man</li>
-        </ul>
+        <ProfileInfo profile={props.profile}/>
       </div>
       <div>
         <div>
@@ -41,7 +35,7 @@ const Profile: React.FC<TStatePostType> = (props) => {
         </div>
         <div>Posts:</div>
         <div className="posts-container">
-          {props.postUser.map(p => <Post
+          {props.userPosts.map(p => <Post
             key={p.id}
             id={p.id}
             message={p.message}

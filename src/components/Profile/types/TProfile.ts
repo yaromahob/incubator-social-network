@@ -1,9 +1,10 @@
-import {TUserPost} from "../../../redux/reducers/types/TProfile_reducer";
+import {TProfileResponse, TUserPost} from "../../../redux/reducers/types/TProfile_reducer";
 
-export type TStatePostType = {
-  postUser: TUserPost[]
+export type TProfile = {
+  userPosts: TUserPost[]
   newPost: string
-  updatePostCallback: (text: string) => void
-  addPostCallback: (post: string) => void
-  addLikeCallback: (id: string) => void
+  profile: TProfileResponse,
+  updatePostTextAC: (text: string) => void
+  addPostAC: (post: string) => void
+  addLikePostAC: (id: string) => void
 }

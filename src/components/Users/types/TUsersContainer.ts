@@ -1,11 +1,4 @@
 import {UsersType, UserType} from "../../../redux/reducers/types/TUsers_reducer";
-import {
-  changeUsersPageAC,
-  followFriendAC,
-  setUsersAC,
-  toggleIsFetchingAC,
-  unFollowFriendAC
-} from "../../../redux/actions/usersAC";
 
 
 export type mapDispatchToPropsType = {

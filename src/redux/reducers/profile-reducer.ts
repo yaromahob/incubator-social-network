@@ -10,7 +10,28 @@ const initialState: TProfilePage = {
     {id: v1(), message: 'ALLO', likesCount: 15},
     {id: v1(), message: 'DAROVA BRAT', likesCount: 99},
   ],
-  newPost: ''
+  newPost: '',
+  profile: {
+    aboutMe: 'I\'m working on it',
+    contacts: {
+      facebook: null,
+      website: null,
+      vk: null,
+      twitter: null,
+      instagram: null,
+      youtube: null,
+      github: null,
+      mainLink: null
+    },
+    lookingForAJob: true,
+    lookingForAJobDescription: 'Don\'t worry, be happy',
+    fullName: 'IVAN IVANOV',
+    userId: 1,
+    photos: {
+      small: 'https://www.svgrepo.com/show/5125/avatar.svg',
+      large: 'https://www.svgrepo.com/show/5125/avatar.svg'
+    }
+  }
 };
 
 export const profileReducer = (state: TProfilePage = initialState, action: ProfileActionType): TProfilePage => {
@@ -24,16 +45,24 @@ export const profileReducer = (state: TProfilePage = initialState, action: Profi
       };
       return {...state, userPosts: [...state.userPosts, post], newPost: ''};
     }
+    
     case "UPDATE-NEW-POST-TEXT": {
-      return {userPosts: state.userPosts, newPost: action.payload};
+      return {...state, userPosts: state.userPosts, newPost: action.payload};
     }
+    
     case "ADD-LIKE": {
       return {
-        userPosts: [...state.userPosts.map(p =>
+        ...state, userPosts: [...state.userPosts.map(p =>
           p.id === action.payload
             ? {...p, likesCount: p.likesCount + 1}
             : p)],
         newPost: ''
+      };
+    }
+    
+    case "SET-USER-PROFILE": {
+      return {
+        ...state, profile: action.payload
       };
     }
     default: {
