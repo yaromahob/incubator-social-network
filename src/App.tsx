@@ -20,7 +20,7 @@ const App: React.FC = () => {
       <main>
         <Navigation sidebarMenu={state.sidebar.sidebarMenu}/>
         <div className="content-body">
-          <Route path="/profile"
+          <Route path="/profile/:userId?"
                  render={() => <ProfileContainer
                  />}/>
           <Route path="/users"

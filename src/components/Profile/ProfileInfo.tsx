@@ -7,11 +7,10 @@ const ProfileInfo: React.FC<TProfileInfoPropsType> = (props) => {
   const userSocialsNetworks = Object.keys(props.profile.contacts);
   const userSocialsNetworksLinks = Object.values(props.profile.contacts);
   const renderContacts = userSocialsNetworksLinks.filter(l => l !== null);
-  console.log(renderContacts);
   const contacts = userSocialsNetworksLinks.map((l, i) => l !== null
     ? <li key={v1()}>{`${userSocialsNetworks[i]}: ${l}`}</li>
     : null);
-  console.log(Object.keys(props.profile.contacts));
+  
   return (
     <>
       <div className="profileAvatar">

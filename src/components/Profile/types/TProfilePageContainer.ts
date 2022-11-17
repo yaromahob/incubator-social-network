@@ -1,6 +1,7 @@
 import {TProfilePage, TProfileResponse, TUserPost} from "../../../redux/reducers/types/TProfile_reducer";
 import {setProfileAC} from "../../../redux/actions/profileAC";
 import profile from "../Profile";
+import {RouteComponentProps} from "react-router-dom";
 
 
 export type mapDispatchToPropsType = {
@@ -14,3 +15,9 @@ export type mapDispatchToPropsType = {
 }
 
 export type TProfileClassPropsType = TProfilePage & mapDispatchToPropsType
+
+export type PathParamType = {
+  userId: string
+}
+
+export type CommonProfileWithUrlType = RouteComponentProps<PathParamType> & TProfileClassPropsType

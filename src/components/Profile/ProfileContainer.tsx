@@ -3,14 +3,17 @@ import Profile from "./Profile";
 import {addLikePostAC, addPostAC, setProfileAC, updatePostTextAC} from "../../redux/actions/profileAC";
 import {AppStateType} from "../../redux/redux-store";
 import {connect} from "react-redux";
-import {TProfilePage, TProfileResponse, TUserPost} from "../../redux/reducers/types/TProfile_reducer";
-import {TProfileClassPropsType} from "./types/TProfilePageContainer";
+import {TProfilePage} from "../../redux/reducers/types/TProfile_reducer";
+import {CommonProfileWithUrlType} from "./types/TProfilePageContainer";
 import axios from "axios";
+import {useParams, withRouter} from "react-router-dom";
 
 
-class ProfilePageContainer extends React.Component<TProfileClassPropsType> {
+class ProfilePageContainer extends React.Component<CommonProfileWithUrlType> {
   componentDidMount() {
-    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/2`).then(response => {
+    let userID = Number(this.props.match.params.userId);
+    if (!userID) userID = 2;
+    axios.get(`https://social-network.samuraijs.com/api/1.0/profile/${userID}`).then(response => {
       this.props.setProfileAC(response.data);
     });
   }
@@ -30,7 +33,6 @@ class ProfilePageContainer extends React.Component<TProfileClassPropsType> {
 }
 
 let mapStateToProps = (state: AppStateType): TProfilePage => {
-  console.log(state.profilePage.profile);
   return {
     userPosts: state.profilePage.userPosts,
     newPost: state.profilePage.newPost,
@@ -38,11 +40,13 @@ let mapStateToProps = (state: AppStateType): TProfilePage => {
   };
 };
 
+let WithUrlDataContainerComponent = withRouter(ProfilePageContainer);
+
 const ProfileContainer = connect(mapStateToProps, {
   updatePostTextAC,
   addPostAC,
   addLikePostAC,
   setProfileAC
-})(ProfilePageContainer);
+})(WithUrlDataContainerComponent);
 
 export default ProfileContainer;
