@@ -1,6 +1,6 @@
 import {addLikePostAC, addPostAC, setProfileAC, updatePostTextAC} from "../profileAC";
 
-export type ProfileActionType = AddPostACType | UpdatePostTextACType | AddLikePostACType | SetProfileAC
+export type ProfileActionsType = AddPostACType | UpdatePostTextACType | AddLikePostACType | SetProfileAC
 
 export type AddPostACType = ReturnType<typeof addPostAC>
 export type UpdatePostTextACType = ReturnType<typeof updatePostTextAC>

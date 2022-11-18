@@ -1,4 +1,4 @@
-import {UsersActionType} from "../actions/types/TUsersAC";
+import {UsersActionsType} from "../actions/types/TUsersAC";
 import {
   CHANGE_CURRENT_PAGE,
   FOLLOW_FRIEND,
@@ -20,7 +20,7 @@ const initialState: UsersType = {
 };
 
 
-export const usersReducer = (state: UsersType = initialState, action: UsersActionType): UsersType => {
+export const usersReducer = (state: UsersType = initialState, action: UsersActionsType): UsersType => {
   
   switch (action.type) {
     case SET_USERS: {

@@ -1,46 +1,32 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
-import {
-  changeUsersPageAC,
-  followFriendAC, isDisabledButtonAC,
-  setUsersAC, toggleIsFetchingAC,
-  unFollowFriendAC,
-} from "../../redux/actions/usersAC";
+
 import Users from "./Users";
 import {UsersClassPropsType} from './types/TUsersContainer';
 import {UsersType} from '../../redux/reducers/types/TUsers';
-import {usersAPI} from "../../api/api";
+import {unFollowSuccessThunk, getUsersThunk, followSuccessThunk} from "../../redux/asyncActions/getUsersThunk";
 
 class UserContainer extends React.Component<UsersClassPropsType> {
   
   componentDidMount() {
-    this.props.toggleIsFetchingAC(true);
-    usersAPI.getUsers(this.props.currentPage, this.props.pageRenderUserSize).then(data => {
-      this.props.setUsersAC(data.items, data.totalCount);
-      this.props.toggleIsFetchingAC(false);
-    });
+    this.props.getUsersThunk(this.props.currentPage, this.props.pageRenderUserSize);
+    
   }
   
-  
-  followHandler = (id: number) => {
-    this.props.followFriendAC(id);
-  };
-  unFollowHandler = (id: number) => {
-    this.props.unFollowFriendAC(id);
-  };
-  isDisabledButtonHandler = (userId: number, isDisabled: boolean) => {
-    this.props.isDisabledButtonAC(userId, isDisabled);
-  };
   onChangePage = (pageNumber: number) => {
-    this.props.changeUsersPageAC(pageNumber);
-    this.props.toggleIsFetchingAC(true);
-    usersAPI.getUsers(pageNumber, this.props.pageRenderUserSize).then(data => {
-      this.props.setUsersAC(data.items, data.totalCount);
-      this.props.toggleIsFetchingAC(false);
-    });
-    
+    this.props.getUsersThunk(pageNumber, this.props.pageRenderUserSize);
   };
+  
+  
+  unFollowSuccessThunkHandler = (userID: number) => {
+    this.props.unFollowSuccessThunk(userID);
+  };
+  
+  followSuccessThunkHandler = (userID: number) => {
+    this.props.followSuccessThunk(userID);
+  };
+  
   
   render() {
     return <Users items={this.props.items}
@@ -48,9 +34,8 @@ class UserContainer extends React.Component<UsersClassPropsType> {
                   currentPage={this.props.currentPage}
                   pageRenderUserSize={this.props.pageRenderUserSize}
                   onChangePage={this.onChangePage}
-                  unFollowHandler={this.unFollowHandler}
-                  followHandler={this.followHandler}
-                  isDisabledButtonHandler={this.isDisabledButtonHandler}
+                  followSuccessThunkHandler={this.followSuccessThunkHandler}
+                  unFollowSuccessThunkHandler={this.unFollowSuccessThunkHandler}
                   isFetching={this.props.isFetching}
                   isDisabledButton={this.props.isDisabledButton}
     />;
@@ -71,12 +56,9 @@ const mapStateToProps = (state: AppStateType): UsersType => {
 
 
 const UsersContainer = connect(mapStateToProps, {
-  setUsersAC,
-  followFriendAC,
-  unFollowFriendAC,
-  changeUsersPageAC,
-  toggleIsFetchingAC,
-  isDisabledButtonAC
+  getUsersThunk,
+  unFollowSuccessThunk,
+  followSuccessThunk
 })(UserContainer);
 
 export default UsersContainer;

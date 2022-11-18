@@ -4,7 +4,6 @@ import {UsersComponentType} from './types/TUsers';
 import './users.css';
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import {usersAPI} from "../../api/api";
 
 
 const Users: React.FC<UsersComponentType> = ({
@@ -13,9 +12,8 @@ const Users: React.FC<UsersComponentType> = ({
                                                currentPage,
                                                pageRenderUserSize,
                                                onChangePage,
-                                               unFollowHandler,
-                                               followHandler,
-                                               isDisabledButtonHandler,
+                                               followSuccessThunkHandler,
+                                               unFollowSuccessThunkHandler,
                                                isFetching,
                                                isDisabledButton
                                              }) => {
@@ -31,25 +29,11 @@ const Users: React.FC<UsersComponentType> = ({
   
   const followHandlerHandler = (userID: number) => {
     
-    isDisabledButtonHandler(userID, true);
-    usersAPI.followUsers(userID).then(response => {
-      if (response.data.resultCode === 0) {
-        followHandler(userID);
-        isDisabledButtonHandler(userID, false);
-      }
-      
-    });
+    followSuccessThunkHandler(userID);
   };
   
   const unFollowHandlerHandler = (userID: number) => {
-    isDisabledButtonHandler(userID, true);
-    usersAPI.unFollowUsers(userID).then(response => {
-      if (response.data.resultCode === 0) {
-        unFollowHandler(userID);
-        isDisabledButtonHandler(userID, false);
-      }
-    });
-    
+    unFollowSuccessThunkHandler(userID);
   };
   
   return (

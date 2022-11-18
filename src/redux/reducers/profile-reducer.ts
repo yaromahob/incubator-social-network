@@ -1,5 +1,5 @@
 import {v1} from "uuid";
-import {ProfileActionType} from "../actions/types/TProfileAC";
+import {ProfileActionsType} from "../actions/types/TProfileAC";
 import {TProfilePage} from "./types/TProfile";
 
 
@@ -34,7 +34,7 @@ const initialState: TProfilePage = {
   }
 };
 
-export const profileReducer = (state: TProfilePage = initialState, action: ProfileActionType): TProfilePage => {
+export const profileReducer = (state: TProfilePage = initialState, action: ProfileActionsType): TProfilePage => {
   
   switch (action.type) {
     case "ADD-POST": {

@@ -6,9 +6,8 @@ export type UsersComponentType = {
   currentPage: number
   pageRenderUserSize: number
   onChangePage: (pageNumber: number) => void
-  unFollowHandler: (userID: number) => void
-  followHandler: (userID: number) => void
-  isDisabledButtonHandler: (userId: number, isDisabled: boolean) => void
+  followSuccessThunkHandler: (userID: number) => void
+  unFollowSuccessThunkHandler: (userID: number) => void
   isFetching: boolean
   isDisabledButton: Array<number>
 }

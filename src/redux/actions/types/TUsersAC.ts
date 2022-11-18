@@ -7,7 +7,7 @@ import {
   unFollowFriendAC
 } from "../usersAC";
 
-export type UsersActionType =
+export type UsersActionsType =
   FollowFriendACType
   | UnFollowFriendACType
   | SetUsersACType
