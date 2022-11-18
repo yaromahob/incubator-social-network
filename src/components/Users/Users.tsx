@@ -4,7 +4,7 @@ import {UsersComponentType} from './types/TUsers';
 import './users.css';
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
-import axios from "axios";
+import {usersAPI} from "../../api/api";
 
 
 const Users: React.FC<UsersComponentType> = ({
@@ -15,7 +15,9 @@ const Users: React.FC<UsersComponentType> = ({
                                                onChangePage,
                                                unFollowHandler,
                                                followHandler,
-                                               isFetching
+                                               isDisabledButtonHandler,
+                                               isFetching,
+                                               isDisabledButton
                                              }) => {
   
   // чтобы не высчитывать 2000+ страниц временная заглушка все USERS сидят в totalUserCount
@@ -28,29 +30,31 @@ const Users: React.FC<UsersComponentType> = ({
   }
   
   const followHandlerHandler = (userID: number) => {
-    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userID}`, {}, {withCredentials: true}).then(response => {
+    
+    isDisabledButtonHandler(userID, true);
+    usersAPI.followUsers(userID).then(response => {
       if (response.data.resultCode === 0) {
-        console.log('FOLLOW');
         followHandler(userID);
+        isDisabledButtonHandler(userID, false);
       }
+      
     });
   };
   
   const unFollowHandlerHandler = (userID: number) => {
-    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userID}`, {withCredentials: true}).then(response => {
+    isDisabledButtonHandler(userID, true);
+    usersAPI.unFollowUsers(userID).then(response => {
       if (response.data.resultCode === 0) {
-        console.log('UNFOLLOW');
         unFollowHandler(userID);
+        isDisabledButtonHandler(userID, false);
       }
     });
     
   };
   
-  
   return (
     <div>
       <h3>Users</h3>
-      
       <div className="items-wrapper">
         
         <div className="paginationPage">
@@ -68,7 +72,6 @@ const Users: React.FC<UsersComponentType> = ({
           
           {items.map((u) => {
               
-              
               return (
                 <div className="user" key={u.id}>
                   <div className="userName">
@@ -80,8 +83,12 @@ const Users: React.FC<UsersComponentType> = ({
                       <h3>{u.name}</h3>
                     </NavLink>
                     {u.followed
-                      ? <button className="unfollow" onClick={() => unFollowHandlerHandler(u.id)}>Unfollow</button>
-                      : <button className="follow" onClick={() => followHandlerHandler(u.id)}>Follow</button>}
+                      ? <button className="unfollow"
+                                disabled={isDisabledButton.some(id => id === u.id)}
+                                onClick={() => unFollowHandlerHandler(u.id)}>Unfollow</button>
+                      : <button className="follow"
+                                disabled={isDisabledButton.some(id => id === u.id)}
+                                onClick={() => followHandlerHandler(u.id)}>Follow</button>}
                   </div>
                   <div className="aboutPerson">
                     <p>{u.status}</p>

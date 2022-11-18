@@ -12,4 +12,5 @@ export type UsersType = {
   pageRenderUserSize: number
   totalUserCount: number
   isFetching: boolean
+  isDisabledButton: Array<number>
 }

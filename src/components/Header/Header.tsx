@@ -5,7 +5,6 @@ import styles from './Header.module.css';
 import {HeaderType} from "./types/THeader";
 
 const Header: React.FC<HeaderType> = (props) => {
-  console.log(props.login);
   return (
     <header>
       <div className="logo-wrapper">

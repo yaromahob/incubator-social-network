@@ -3,7 +3,7 @@ import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 import {
   changeUsersPageAC,
-  followFriendAC,
+  followFriendAC, isDisabledButtonAC,
   setUsersAC, toggleIsFetchingAC,
   unFollowFriendAC,
 } from "../../redux/actions/usersAC";
@@ -29,6 +29,9 @@ class UserContainer extends React.Component<UsersClassPropsType> {
   unFollowHandler = (id: number) => {
     this.props.unFollowFriendAC(id);
   };
+  isDisabledButtonHandler = (userId: number, isDisabled: boolean) => {
+    this.props.isDisabledButtonAC(userId, isDisabled);
+  };
   onChangePage = (pageNumber: number) => {
     this.props.changeUsersPageAC(pageNumber);
     this.props.toggleIsFetchingAC(true);
@@ -47,7 +50,9 @@ class UserContainer extends React.Component<UsersClassPropsType> {
                   onChangePage={this.onChangePage}
                   unFollowHandler={this.unFollowHandler}
                   followHandler={this.followHandler}
+                  isDisabledButtonHandler={this.isDisabledButtonHandler}
                   isFetching={this.props.isFetching}
+                  isDisabledButton={this.props.isDisabledButton}
     />;
   }
 }
@@ -59,7 +64,8 @@ const mapStateToProps = (state: AppStateType): UsersType => {
     currentPage: state.usersPage.currentPage,
     pageRenderUserSize: state.usersPage.pageRenderUserSize,
     totalUserCount: state.usersPage.totalUserCount,
-    isFetching: state.usersPage.isFetching
+    isFetching: state.usersPage.isFetching,
+    isDisabledButton: state.usersPage.isDisabledButton
   };
 };
 
@@ -69,7 +75,8 @@ const UsersContainer = connect(mapStateToProps, {
   followFriendAC,
   unFollowFriendAC,
   changeUsersPageAC,
-  toggleIsFetchingAC
+  toggleIsFetchingAC,
+  isDisabledButtonAC
 })(UserContainer);
 
 export default UsersContainer;

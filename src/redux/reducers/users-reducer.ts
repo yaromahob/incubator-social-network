@@ -1,5 +1,12 @@
 import {UsersActionType} from "../actions/types/TUsersAC";
-import {CHANGE_CURRENT_PAGE, FOLLOW_FRIEND, SET_USERS, UNFOLLOW_FRIEND} from "../actions/usersAC";
+import {
+  CHANGE_CURRENT_PAGE,
+  FOLLOW_FRIEND,
+  IS_DISABLED_BUTTON,
+  SET_USERS,
+  TOGGLE_IS_FETCHING,
+  UNFOLLOW_FRIEND
+} from "../actions/usersAC";
 import {UsersType} from "./types/TUsers";
 
 
@@ -8,8 +15,10 @@ const initialState: UsersType = {
   currentPage: 1,
   pageRenderUserSize: 9,
   totalUserCount: 0,
-  isFetching: false
+  isFetching: false,
+  isDisabledButton: []
 };
+
 
 export const usersReducer = (state: UsersType = initialState, action: UsersActionType): UsersType => {
   
@@ -43,10 +52,19 @@ export const usersReducer = (state: UsersType = initialState, action: UsersActio
       };
     }
     
-    case "TOGGLE-IS-FETCHING": {
+    case TOGGLE_IS_FETCHING: {
       return {
         ...state,
         isFetching: action.payload
+      };
+    }
+    
+    case IS_DISABLED_BUTTON: {
+      return {
+        ...state,
+        isDisabledButton: action.payload.isDisabled
+          ? [...state.isDisabledButton, action.payload.userId]
+          : [...state.isDisabledButton.filter(id => id !== action.payload.userId)]
       };
     }
     

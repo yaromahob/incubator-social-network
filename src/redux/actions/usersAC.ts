@@ -6,6 +6,7 @@ export const FOLLOW_FRIEND = 'FOLLOW-FRIEND';
 export const UNFOLLOW_FRIEND = 'UNFOLLOW-FRIEND';
 export const CHANGE_CURRENT_PAGE = 'CHANGE-CURRENT-PAGE';
 export const TOGGLE_IS_FETCHING = "TOGGLE-IS-FETCHING";
+export const IS_DISABLED_BUTTON = "IS_DISABLED_BUTTON";
 
 export const setUsersAC = (users: Array<UserType>, totalUsersCount: number) => {
   return {
@@ -43,5 +44,15 @@ export const toggleIsFetchingAC = (fetchResult: boolean) => {
   return {
     type: TOGGLE_IS_FETCHING,
     payload: fetchResult
+  } as const;
+};
+
+export const isDisabledButtonAC = (userId: number, isDisabled: boolean) => {
+  return {
+    type: IS_DISABLED_BUTTON,
+    payload: {
+      isDisabled,
+      userId
+    }
   } as const;
 };
