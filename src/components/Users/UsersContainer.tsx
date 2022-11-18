@@ -16,7 +16,7 @@ class UserContainer extends React.Component<UsersClassPropsType> {
   
   componentDidMount() {
     this.props.toggleIsFetchingAC(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageRenderUserSize}`).then(response => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageRenderUserSize}`, {withCredentials: true}).then(response => {
       this.props.setUsersAC(response.data.items, response.data.totalCount);
       this.props.toggleIsFetchingAC(false);
     });
@@ -32,7 +32,7 @@ class UserContainer extends React.Component<UsersClassPropsType> {
   onChangePage = (pageNumber: number) => {
     this.props.changeUsersPageAC(pageNumber);
     this.props.toggleIsFetchingAC(true);
-    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageRenderUserSize}`).then(response => {
+    axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageRenderUserSize}`, {withCredentials: true}).then(response => {
       this.props.setUsersAC(response.data.items, response.data.totalCount);
       this.props.toggleIsFetchingAC(false);
     });

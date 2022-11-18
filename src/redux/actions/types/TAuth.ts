@@ -1,4 +1,4 @@
-import {setAuthUserDataAC} from "../../actions/setAuthUserDataAC";
+import {setAuthUserDataAC} from "../setAuthUserDataAC";
 
 export type AuthDataType = {
   userId: number | null

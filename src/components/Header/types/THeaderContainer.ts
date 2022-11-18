@@ -1,4 +1,4 @@
-import {ActionsAuthTypes, AuthDataType, setAuthUserDataACType} from "../../../redux/reducers/types/TAuth";
+import {ActionsAuthTypes, AuthDataType, setAuthUserDataACType} from "../../../redux/actions/types/TAuth";
 import {setAuthUserDataAC} from "../../../redux/actions/setAuthUserDataAC";
 
 export type MapDispatchToPropsType = {

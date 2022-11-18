@@ -1,4 +1,4 @@
-import {ActionsAuthTypes, AuthDataType} from "./types/TAuth";
+import {ActionsAuthTypes, AuthDataType} from "../actions/types/TAuth";
 
 export const SET_USER_DATA = 'SET-USER-DATA';
 

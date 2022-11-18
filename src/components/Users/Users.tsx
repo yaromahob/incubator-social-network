@@ -4,6 +4,7 @@ import {UsersComponentType} from './types/TUsers';
 import './users.css';
 import Preloader from "../common/Preloader/Preloader";
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 
 const Users: React.FC<UsersComponentType> = ({
@@ -27,11 +28,22 @@ const Users: React.FC<UsersComponentType> = ({
   }
   
   const followHandlerHandler = (userID: number) => {
-    followHandler(userID);
+    axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userID}`, {}, {withCredentials: true}).then(response => {
+      if (response.data.resultCode === 0) {
+        console.log('FOLLOW');
+        followHandler(userID);
+      }
+    });
   };
   
   const unFollowHandlerHandler = (userID: number) => {
-    unFollowHandler(userID);
+    axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userID}`, {withCredentials: true}).then(response => {
+      if (response.data.resultCode === 0) {
+        console.log('UNFOLLOW');
+        unFollowHandler(userID);
+      }
+    });
+    
   };
   
   

@@ -4,7 +4,7 @@ import axios from "axios";
 import {connect} from "react-redux";
 import {AppStateType} from "../../redux/redux-store";
 import {setAuthUserDataAC} from "../../redux/actions/setAuthUserDataAC";
-import {AuthDataType} from "../../redux/reducers/types/TAuth";
+import {AuthDataType} from "../../redux/actions/types/TAuth";
 import {AuthClassPropsType} from "./types/THeaderContainer";
 
 class HeaderContainer extends React.Component<AuthClassPropsType> {
