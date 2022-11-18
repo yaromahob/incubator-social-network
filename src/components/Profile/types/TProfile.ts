@@ -1,4 +1,4 @@
-import {TProfileResponse, TUserPost} from "../../../redux/reducers/types/TProfile_reducer";
+import {TProfileResponse, TUserPost} from "../../../redux/reducers/types/TProfile";
 
 export type TProfile = {
   userPosts: TUserPost[]

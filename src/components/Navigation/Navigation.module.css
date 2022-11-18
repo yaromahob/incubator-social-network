@@ -1,20 +1,20 @@
-main nav {
+.sidebarMenu {
   background-color: #eee;
   padding-left: 20px;
   padding-top: 20px;
   
 }
 
-main nav ul li {
+.sidebarMenu ul li {
   position: relative;
   margin-bottom: 15px;
 }
 
-li .active {
+ul li a .active {
   font-weight: 700;
 }
 
-.active:after {
+ul li .active:after {
   content: '';
   position: absolute;
   border-right: 2px solid #000000;

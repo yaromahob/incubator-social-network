@@ -1,6 +1,6 @@
 import {v1} from "uuid";
 import {USERS_DATA} from "../../Dataset/users";
-import {TMessagesPage} from "./types/TMessages_reducer";
+import {TMessagesPage} from "./types/TMessages";
 
 
 const initialState: TMessagesPage = {

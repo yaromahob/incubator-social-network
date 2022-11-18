@@ -1,4 +1,4 @@
-import {UsersType, UserType} from "../../../redux/reducers/types/TUsers_reducer";
+import {UsersType, UserType} from "../../../redux/reducers/types/TUsers";
 
 
 export type mapDispatchToPropsType = {

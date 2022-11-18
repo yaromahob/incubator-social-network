@@ -10,13 +10,14 @@ import Music from "./components/Music/Music";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import './App.css';
 import UsersContainer from "./components/Users/UsersContainer";
+import HeaderContainer from "./components/Header/HeaderContainer";
 
 const App: React.FC = () => {
   const state = store.getState();
   
   return (
     <div className="app-wrapper">
-      <Header/>
+      <HeaderContainer/>
       <main>
         <Navigation sidebarMenu={state.sidebar.sidebarMenu}/>
         <div className="content-body">

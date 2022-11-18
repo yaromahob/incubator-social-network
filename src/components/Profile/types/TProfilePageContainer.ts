@@ -1,4 +1,4 @@
-import {TProfilePage, TProfileResponse, TUserPost} from "../../../redux/reducers/types/TProfile_reducer";
+import {TProfilePage, TProfileResponse, TUserPost} from "../../../redux/reducers/types/TProfile";
 import {setProfileAC} from "../../../redux/actions/profileAC";
 import profile from "../Profile";
 import {RouteComponentProps} from "react-router-dom";

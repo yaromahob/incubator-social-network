@@ -1,7 +1,7 @@
 import React from 'react';
 import {NavLink} from "react-router-dom";
-import {TSidebarMenu} from '../../redux/reducers/types/TSidebar_reducer';
-import './Navigation.css';
+import {TSidebarMenu} from '../../redux/reducers/types/TSidebar';
+import styles from './Navigation.module.css';
 import {SidebarMenuPropsType} from './types/TNavigation';
 
 
@@ -10,13 +10,13 @@ const Navigation: React.FC<SidebarMenuPropsType> = (props) => {
   
   return (
     
-    <nav>
+    <nav className={styles.sidebarMenu}>
       <ul>
         {props.sidebarMenu.map((item: TSidebarMenu, index: number) => {
           return (
             <li key={index}>
               <NavLink
-                className={(isActive) => isActive ? 'active' : ''}
+                className={(isActive) => isActive ? styles.active : ''}
                 to={item.directory}>
                 {item.folder}
               </NavLink>

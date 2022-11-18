@@ -1,9 +1,9 @@
 import {UsersActionType} from "../actions/types/TUsersAC";
 import {CHANGE_CURRENT_PAGE, FOLLOW_FRIEND, SET_USERS, UNFOLLOW_FRIEND} from "../actions/usersAC";
-import {UsersType} from "./types/TUsers_reducer";
+import {UsersType} from "./types/TUsers";
 
 
-let initialState: UsersType = {
+const initialState: UsersType = {
   items: [],
   currentPage: 1,
   pageRenderUserSize: 9,

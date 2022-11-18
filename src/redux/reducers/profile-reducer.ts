@@ -1,6 +1,6 @@
 import {v1} from "uuid";
 import {ProfileActionType} from "../actions/types/TProfileAC";
-import {TProfilePage} from "./types/TProfile_reducer";
+import {TProfilePage} from "./types/TProfile";
 
 
 const initialState: TProfilePage = {

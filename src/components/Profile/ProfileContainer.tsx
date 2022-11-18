@@ -3,10 +3,10 @@ import Profile from "./Profile";
 import {addLikePostAC, addPostAC, setProfileAC, updatePostTextAC} from "../../redux/actions/profileAC";
 import {AppStateType} from "../../redux/redux-store";
 import {connect} from "react-redux";
-import {TProfilePage} from "../../redux/reducers/types/TProfile_reducer";
+import {TProfilePage} from "../../redux/reducers/types/TProfile";
 import {CommonProfileWithUrlType} from "./types/TProfilePageContainer";
 import axios from "axios";
-import {useParams, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 
 class ProfilePageContainer extends React.Component<CommonProfileWithUrlType> {

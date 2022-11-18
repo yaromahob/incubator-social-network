@@ -3,13 +3,15 @@ import {profileReducer} from "./reducers/profile-reducer";
 import {messagesReducer} from "./reducers/messages-reducer";
 import {sidebarReducer} from "./reducers/sidebar-reducer";
 import {usersReducer} from "./reducers/users-reducer";
+import {authReducer} from "./reducers/authMe-reducer";
 
 
 const rootReducer = combineReducers({
   profilePage: profileReducer,
   messagesPage: messagesReducer,
   sidebar: sidebarReducer,
-  usersPage: usersReducer
+  usersPage: usersReducer,
+  auth: authReducer,
 });
 
 export type AppStateType = ReturnType<typeof rootReducer>

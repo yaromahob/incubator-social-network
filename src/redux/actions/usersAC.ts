@@ -1,4 +1,4 @@
-import {UserType} from "../reducers/types/TUsers_reducer";
+import {UserType} from "../reducers/types/TUsers";
 
 
 export const SET_USERS = 'SET-USERS';

@@ -1,4 +1,4 @@
-import {UserType} from "../../../redux/reducers/types/TUsers_reducer";
+import {UserType} from "../../../redux/reducers/types/TUsers";
 
 export type UsersComponentType = {
   items: Array<UserType>

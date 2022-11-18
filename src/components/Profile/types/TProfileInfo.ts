@@ -1,4 +1,4 @@
-import {TProfileResponse} from "../../../redux/reducers/types/TProfile_reducer";
+import {TProfileResponse} from "../../../redux/reducers/types/TProfile";
 
 export type TProfileInfoPropsType = {
   profile: TProfileResponse

@@ -1,4 +1,4 @@
-import {TSidebar} from "./types/TSidebar_reducer";
+import {TSidebar} from "./types/TSidebar";
 
 
 const initialState: TSidebar = {

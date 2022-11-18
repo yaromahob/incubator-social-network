@@ -1,4 +1,4 @@
-import {TProfileResponse} from "../reducers/types/TProfile_reducer";
+import {TProfileResponse} from "../reducers/types/TProfile";
 
 export const addPostAC = (message: string) => {
   return {

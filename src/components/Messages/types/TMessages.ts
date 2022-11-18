@@ -1,5 +1,5 @@
 import {TUserData} from "../../../Dataset/users";
-import {TUserMessages} from "../../../redux/reducers/types/TMessages_reducer";
+import {TUserMessages} from "../../../redux/reducers/types/TMessages";
 
 export type UserDataType = {
   userData: TUserData[]

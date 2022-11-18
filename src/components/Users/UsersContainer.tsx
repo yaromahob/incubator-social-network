@@ -10,7 +10,7 @@ import {
 import axios from "axios";
 import Users from "./Users";
 import {UsersClassPropsType} from './types/TUsersContainer';
-import {UsersType} from '../../redux/reducers/types/TUsers_reducer';
+import {UsersType} from '../../redux/reducers/types/TUsers';
 
 class UserContainer extends React.Component<UsersClassPropsType> {
   
