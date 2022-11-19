@@ -11,6 +11,7 @@ import ProfileContainer from "./components/Profile/ProfileContainer";
 import './App.css';
 import UsersContainer from "./components/Users/UsersContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
+import Login from "./components/Login/Login";
 
 const App: React.FC = () => {
   const state = store.getState();
@@ -34,6 +35,8 @@ const App: React.FC = () => {
                  render={() => <News/>}/>
           <Route path="/music"
                  render={() => <Music/>}/>
+          <Route path="/login"
+                 render={() => <Login/>}/>
         </div>
       </main>
       <footer>footer yaromahob</footer>

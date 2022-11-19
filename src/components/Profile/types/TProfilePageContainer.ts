@@ -20,4 +20,4 @@ export type PathParamType = {
   userId: string
 }
 
-export type CommonProfileWithUrlType = RouteComponentProps<PathParamType> & TProfileClassPropsType
+export type CommonProfileWithUrlType = RouteComponentProps<PathParamType> & TProfileClassPropsType & { isAuth: boolean }

@@ -1,3 +1,4 @@
+import {UsersType} from "../../components/Users/types/TUsersContainer";
 import {UsersActionsType} from "../actions/types/TUsersAC";
 import {
   CHANGE_CURRENT_PAGE,
@@ -7,7 +8,6 @@ import {
   TOGGLE_IS_FETCHING,
   UNFOLLOW_FRIEND
 } from "../actions/usersAC";
-import {UsersType} from "./types/TUsers";
 
 
 const initialState: UsersType = {

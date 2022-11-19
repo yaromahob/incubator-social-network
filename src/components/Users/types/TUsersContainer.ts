@@ -1,14 +1,17 @@
-import {UsersType, UserType} from "../../../redux/reducers/types/TUsers";
-import {isDisabledButtonAC} from "../../../redux/actions/usersAC";
-import {unFollowSuccessThunk, getUsersThunk} from "../../../redux/asyncActions/getUsersThunk";
+import {UserType} from "../../../redux/reducers/types/TUsers";
 
+export type UsersType = {
+  items: Array<UserType>
+  currentPage: number
+  pageRenderUserSize: number
+  totalUserCount: number
+  isFetching: boolean
+  isDisabledButton: Array<number>
+}
 
 export type mapDispatchToPropsType = {
-  // setUsersAC: (users: Array<UserType>, totalUsersCount: number) => void
-  // toggleIsFetchingAC: (fetchResult: boolean) => void
-  
   getUsersThunk: (currentPage: number, pageRenderUserSize: number) => void
   unFollowSuccessThunk: (userID: number) => void
   followSuccessThunk: (userID: number) => void
 }
-export type UsersClassPropsType = mapDispatchToPropsType & UsersType
+export type UsersClassPropsType = mapDispatchToPropsType & UsersType & { isAuth: boolean }

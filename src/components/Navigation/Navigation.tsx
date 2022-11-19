@@ -6,8 +6,6 @@ import {SidebarMenuPropsType} from './types/TNavigation';
 
 
 const Navigation: React.FC<SidebarMenuPropsType> = (props) => {
-  
-  
   return (
     
     <nav className={styles.sidebarMenu}>
