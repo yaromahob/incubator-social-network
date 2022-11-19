@@ -6,6 +6,7 @@ import Users from "./Users";
 import {UsersClassPropsType, UsersType} from './types/TUsersContainer';
 import {unFollowSuccessThunk, getUsersThunk, followSuccessThunk} from "../../redux/asyncActions/getUsersThunk";
 import {Redirect} from "react-router-dom";
+import WithAuthRedirect from "../HOC/WithAuthRedirect";
 
 class UserContainer extends React.Component<UsersClassPropsType> {
   
@@ -29,9 +30,7 @@ class UserContainer extends React.Component<UsersClassPropsType> {
   
   
   render() {
-    if (!this.props.isAuth) {
-      return <Redirect to="/login"/>;
-    }
+    
     
     return (
       <Users items={this.props.items}
@@ -50,7 +49,7 @@ class UserContainer extends React.Component<UsersClassPropsType> {
 }
 
 
-const mapStateToProps = (state: AppStateType): UsersType & { isAuth: boolean } => {
+const mapStateToProps = (state: AppStateType): UsersType => {
   return {
     items: state.usersPage.items,
     currentPage: state.usersPage.currentPage,
@@ -58,15 +57,15 @@ const mapStateToProps = (state: AppStateType): UsersType & { isAuth: boolean } =
     totalUserCount: state.usersPage.totalUserCount,
     isFetching: state.usersPage.isFetching,
     isDisabledButton: state.usersPage.isDisabledButton,
-    isAuth: state.auth.isAuth
+    // isAuth: state.auth.isAuth
   };
 };
 
+let UsersAuthRedirect = WithAuthRedirect(UserContainer);
 
-const UsersContainer = connect(mapStateToProps, {
+
+export default connect(mapStateToProps, {
   getUsersThunk,
   unFollowSuccessThunk,
   followSuccessThunk
-})(UserContainer);
-
-export default UsersContainer;
+})(UsersAuthRedirect);

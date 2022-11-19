@@ -7,7 +7,7 @@ import {TProfilePage} from "../../redux/reducers/types/TProfile";
 import {CommonProfileWithUrlType} from "./types/TProfilePageContainer";
 import {withRouter} from "react-router-dom";
 import {getProfileUserThunk} from "../../redux/asyncActions/getUsersThunk";
-import Login from "../Login/Login";
+import WithAuthRedirect from "../HOC/WithAuthRedirect";
 
 
 class ProfilePageContainer extends React.Component<CommonProfileWithUrlType> {
@@ -18,7 +18,7 @@ class ProfilePageContainer extends React.Component<CommonProfileWithUrlType> {
   }
   
   render() {
-    return this.props.isAuth ? (
+    return (
       <Profile userPosts={this.props.userPosts}
                newPost={this.props.newPost}
                profile={this.props.profile}
@@ -26,26 +26,25 @@ class ProfilePageContainer extends React.Component<CommonProfileWithUrlType> {
                addPostAC={this.props.addPostAC}
                addLikePostAC={this.props.addLikePostAC}
       />
-    ) : <Login/>;
+    );
   }
 }
 
-let mapStateToProps = (state: AppStateType): TProfilePage & { isAuth: boolean } => {
+let mapStateToProps = (state: AppStateType): TProfilePage => {
   return {
     userPosts: state.profilePage.userPosts,
     newPost: state.profilePage.newPost,
     profile: state.profilePage.profile,
-    isAuth: state.auth.isAuth,
   };
 };
 
-let WithUrlDataContainerComponent = withRouter(ProfilePageContainer);
+let ProfileAuthRedirect = WithAuthRedirect(ProfilePageContainer);
+let WithUrlDataContainerComponent = withRouter(ProfileAuthRedirect);
 
-const ProfileContainer = connect(mapStateToProps, {
+
+export default connect(mapStateToProps, {
   updatePostTextAC,
   addPostAC,
   addLikePostAC,
   getProfileUserThunk
 })(WithUrlDataContainerComponent);
-
-export default ProfileContainer;

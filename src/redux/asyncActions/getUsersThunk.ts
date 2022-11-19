@@ -63,5 +63,6 @@ export const authMeThunk = (): AppThunk => {
         dispatch(setAuthUserDataAC(id, email, login));
       }
     });
+    
   };
 };

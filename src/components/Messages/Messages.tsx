@@ -1,6 +1,7 @@
 import React from 'react';
 import Dialogs from "../Dialogs/Dialogs";
 import {StateUserDataType} from './types/TMessages';
+import WithAuthRedirect from "../HOC/WithAuthRedirect";
 
 
 const Messages: React.FC<StateUserDataType> = (props) => {
@@ -13,5 +14,6 @@ const Messages: React.FC<StateUserDataType> = (props) => {
     </div>
   );
 };
+let MessagesAuthRedirect = WithAuthRedirect(Messages);
 
-export default Messages;
+export default MessagesAuthRedirect;
