@@ -8,6 +8,8 @@ import {
 } from "../actions/usersAC";
 import {Dispatch} from "redux";
 import {AppActionsType, AppThunk} from "../redux-store";
+import {setProfileAC} from "../actions/profileAC";
+import {setAuthUserDataAC} from "../actions/setAuthUserDataAC";
 
 export const getUsersThunk = (currentPage: number, pageRenderUserSize: number): AppThunk => {
   return (dispatch: Dispatch<AppActionsType>) => {
@@ -40,6 +42,25 @@ export const unFollowSuccessThunk = (userID: number): AppThunk => {
       if (response.data.resultCode === 0) {
         dispatch(unFollowFriendAC(userID));
         dispatch(isDisabledButtonAC(userID, false));
+      }
+    });
+  };
+};
+
+export const getProfileUserThunk = (userID: number): AppThunk => {
+  return (dispatch: Dispatch<AppActionsType>) => {
+    usersAPI.getProfileUser(userID).then(response => {
+      dispatch(setProfileAC(response.data));
+    });
+  };
+};
+
+export const authMeThunk = (): AppThunk => {
+  return (dispatch: Dispatch<AppActionsType>) => {
+    usersAPI.authMe().then(response => {
+      if (response.data.resultCode === 0) {
+        const {id, email, login} = response.data.data;
+        dispatch(setAuthUserDataAC(id, email, login));
       }
     });
   };
