@@ -24,4 +24,5 @@ export type AppActionsType = UsersActionsType | ProfileActionsType | ActionsAuth
 
 // универсальная типизация thunk для того, чтобы если будет thunk в thunk
 export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, AppStateType, unknown, AppActionsType>
+
 export default store;

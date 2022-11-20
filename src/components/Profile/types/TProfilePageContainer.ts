@@ -1,13 +1,9 @@
-import {TProfilePage, TProfileResponse, TUserPost} from "../../../redux/reducers/types/TProfile";
-import {setProfileAC} from "../../../redux/actions/profileAC";
-import profile from "../Profile";
+import {TProfilePage} from "../../../redux/reducers/types/TProfile";
+
 import {RouteComponentProps} from "react-router-dom";
 
 
 export type mapDispatchToPropsType = {
-  userPosts: TUserPost[]
-  newPost: string
-  profile: TProfileResponse,
   updatePostTextAC: (text: string) => void
   addPostAC: (post: string) => void
   addLikePostAC: (id: string) => void
@@ -17,7 +13,7 @@ export type mapDispatchToPropsType = {
 export type TProfileClassPropsType = TProfilePage & mapDispatchToPropsType
 
 export type PathParamType = {
-  userId: string
+  userID: string
 }
 
-export type CommonProfileWithUrlType = RouteComponentProps<PathParamType> & TProfileClassPropsType & { isAuth: boolean }
+export type CommonProfileWithUrlType = RouteComponentProps<PathParamType> & TProfileClassPropsType

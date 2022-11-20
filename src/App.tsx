@@ -2,7 +2,6 @@ import React from 'react';
 import {Route} from "react-router-dom";
 
 import store from "./redux/redux-store";
-import Header from "./components/Header/Header";
 import Navigation from "./components/Navigation/Navigation";
 import Messages from "./components/Messages/Messages";
 import News from "./components/News/News";
@@ -23,11 +22,13 @@ const App: React.FC = () => {
         <Navigation sidebarMenu={state.sidebar.sidebarMenu}/>
         <div className="content-body">
           <Route path="/profile/:userId?"
-                 render={() => <ProfileContainer
-                 />}/>
+            // TS2604: JSX element type 'ProfileContainer' does not have any construct or call signatures.
+            // @ts-ignore
+                 render={() => <ProfileContainer/>}
+          />
           <Route path="/users"
-                 render={() => <UsersContainer
-                 />}/>
+                 render={() => <UsersContainer/>}
+          />
           <Route path="/messages"
                  render={() => <Messages
                    state={state.messagesPage}/>}/>
