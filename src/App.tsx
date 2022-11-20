@@ -22,8 +22,6 @@ const App: React.FC = () => {
         <Navigation sidebarMenu={state.sidebar.sidebarMenu}/>
         <div className="content-body">
           <Route path="/profile/:userId?"
-            // TS2604: JSX element type 'ProfileContainer' does not have any construct or call signatures.
-            // @ts-ignore
                  render={() => <ProfileContainer/>}
           />
           <Route path="/users"

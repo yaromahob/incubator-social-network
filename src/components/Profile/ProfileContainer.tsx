@@ -61,7 +61,7 @@ let mapStateToProps = (state: AppStateType): TProfilePage => {
 
 class ProfileContainer extends React.Component<CommonProfileWithUrlType> {
   componentDidMount() {
-    let userID = Number(this.props.match.params.userID);
+    let userID = Number(this.props.match.params.userId);
     if (!userID) userID = 2;
     this.props.getProfileUserThunk(userID);
   }
@@ -80,7 +80,7 @@ class ProfileContainer extends React.Component<CommonProfileWithUrlType> {
 }
 
 
-export default compose(
+export default compose<React.ComponentType>(
   connect<TProfilePage, mapDispatchToPropsType, {}, AppStateType>(mapStateToProps,
     {
       updatePostTextAC,

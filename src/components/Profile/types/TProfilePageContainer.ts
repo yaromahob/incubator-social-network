@@ -13,7 +13,7 @@ export type mapDispatchToPropsType = {
 export type TProfileClassPropsType = TProfilePage & mapDispatchToPropsType
 
 export type PathParamType = {
-  userID: string
+  userId: string
 }
 
 export type CommonProfileWithUrlType = RouteComponentProps<PathParamType> & TProfileClassPropsType
