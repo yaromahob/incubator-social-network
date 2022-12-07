@@ -1,8 +1,8 @@
 import React, {ChangeEvent} from 'react';
 import './Profile.css';
-import Post from "../Post/Post";
-import ProfileInfo from "./ProfileInfo";
-import {TProfile} from "./types/TProfile";
+import Post from "../../Post/Post";
+import ProfileInfo from "../ProfileInfo/ProfileInfo";
+import {TProfile} from "../types/TProfile";
 
 
 const Profile: React.FC<TProfile> = (props) => {
@@ -24,7 +24,7 @@ const Profile: React.FC<TProfile> = (props) => {
         <h3>Profile</h3>
       </div>
       <div className="user-info">
-        <ProfileInfo profile={props.profile}/>
+        <ProfileInfo profile={props.profile} status={props.statusUser} setStatusUserThunk={props.setStatusUserThunk}/>
       </div>
       <div>
         <div>

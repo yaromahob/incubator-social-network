@@ -1,54 +1,14 @@
 import React from 'react';
-import Profile from "./Profile";
+import Profile from "./Profile/Profile";
 import {addLikePostAC, addPostAC, updatePostTextAC} from "../../redux/actions/profileAC";
 import {AppStateType} from "../../redux/redux-store";
 import {connect} from "react-redux";
 import {TProfilePage} from "../../redux/reducers/types/TProfile";
-import {CommonProfileWithUrlType, mapDispatchToPropsType, TProfileClassPropsType} from "./types/TProfilePageContainer";
+import {CommonProfileWithUrlType, mapDispatchToPropsType} from "./types/TProfilePageContainer";
 import {withRouter} from "react-router-dom";
-import {getProfileUserThunk} from "../../redux/asyncActions/getUsersThunk";
+import {getProfileUserThunk, getStatusUserThunk, setStatusUserThunk} from "../../redux/asyncActions/getUsersThunk";
 import WithAuthRedirect from "../HOC/WithAuthRedirect";
 import {compose} from "redux";
-
-
-// class ProfileContainer extends React.Component<CommonProfileWithUrlType> {
-//   componentDidMount() {
-//     let userID = Number(this.props.match.params.userId);
-//     if (!userID) userID = 2;
-//     this.props.getProfileUserThunk(userID);
-//   }
-//
-//   render() {
-//     return (
-//       <Profile userPosts={this.props.userPosts}
-//                newPost={this.props.newPost}
-//                profile={this.props.profile}
-//                updatePostTextAC={this.props.updatePostTextAC}
-//                addPostAC={this.props.addPostAC}
-//                addLikePostAC={this.props.addLikePostAC}
-//       />
-//     );
-//   }
-// }
-
-// let mapStateToProps = (state: AppStateType): TProfilePage => {
-//   return {
-//     userPosts: state.profilePage.userPosts,
-//     newPost: state.profilePage.newPost,
-//     profile: state.profilePage.profile,
-//   };
-// };
-//
-// let ProfileAuthRedirect = WithAuthRedirect(ProfileContainer);
-// let WithUrlDataContainerComponent = withRouter(ProfileAuthRedirect);
-//
-//
-// export default connect(mapStateToProps, {
-//   updatePostTextAC,
-//   addPostAC,
-//   addLikePostAC,
-//   getProfileUserThunk
-// })(WithUrlDataContainerComponent);
 
 
 let mapStateToProps = (state: AppStateType): TProfilePage => {
@@ -56,14 +16,16 @@ let mapStateToProps = (state: AppStateType): TProfilePage => {
     userPosts: state.profilePage.userPosts,
     newPost: state.profilePage.newPost,
     profile: state.profilePage.profile,
+    status: state.profilePage.status
   };
 };
 
 class ProfileContainer extends React.Component<CommonProfileWithUrlType> {
   componentDidMount() {
     let userID = Number(this.props.match.params.userId);
-    if (!userID) userID = 2;
+    if (!userID) userID = 26477;
     this.props.getProfileUserThunk(userID);
+    this.props.getStatusUserThunk(userID);
   }
   
   render() {
@@ -71,9 +33,11 @@ class ProfileContainer extends React.Component<CommonProfileWithUrlType> {
       <Profile userPosts={this.props.userPosts}
                newPost={this.props.newPost}
                profile={this.props.profile}
+               statusUser={this.props.status}
                updatePostTextAC={this.props.updatePostTextAC}
                addPostAC={this.props.addPostAC}
                addLikePostAC={this.props.addLikePostAC}
+               setStatusUserThunk={this.props.setStatusUserThunk}
       />
     );
   }
@@ -86,6 +50,8 @@ export default compose<React.ComponentType>(
       updatePostTextAC,
       addPostAC,
       addLikePostAC,
-      getProfileUserThunk
+      getProfileUserThunk,
+      getStatusUserThunk,
+      setStatusUserThunk
     }),
   withRouter, WithAuthRedirect)(ProfileContainer);

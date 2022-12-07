@@ -1,4 +1,4 @@
-import {usersAPI} from "../../api/api";
+import {profileAPI, usersAPI} from "../../api/api";
 import {
   changeUsersPageAC, followFriendAC,
   isDisabledButtonAC,
@@ -8,7 +8,7 @@ import {
 } from "../actions/usersAC";
 import {Dispatch} from "redux";
 import {AppActionsType, AppThunk} from "../redux-store";
-import {setProfileAC} from "../actions/profileAC";
+import {getStatusAC, setProfileAC, setStatusAC} from "../actions/profileAC";
 import {setAuthUserDataAC} from "../actions/setAuthUserDataAC";
 
 export const getUsersThunk = (currentPage: number, pageRenderUserSize: number): AppThunk => {
@@ -63,6 +63,24 @@ export const authMeThunk = (): AppThunk => {
         dispatch(setAuthUserDataAC(id, email, login));
       }
     });
-    
+  };
+};
+
+export const getStatusUserThunk = (userID: number): AppThunk => {
+  return (dispatch: Dispatch<AppActionsType>) => {
+    profileAPI.getStatusUser(userID).then(response => {
+      // dispatch(getStatusAC(response.data));
+    });
+  };
+};
+
+export const setStatusUserThunk = (status: string): AppThunk => {
+  return (dispatch: Dispatch<AppActionsType>) => {
+    profileAPI.updateStatus(status).then(response => {
+      console.log(response);
+      if (response.data.resultCode === 0) {
+        dispatch(setStatusAC(status));
+      }
+    });
   };
 };

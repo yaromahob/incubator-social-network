@@ -27,3 +27,17 @@ export const setProfileAC = (profile: TProfileResponse) => {
     payload: profile
   } as const;
 };
+
+export const setStatusAC = (newStatus: string) => {
+  return {
+    type: 'SET-STATUS',
+    payload: newStatus
+  } as const;
+};
+
+export const getStatusAC = (status: string) => {
+  return {
+    type: 'GET-STATUS',
+    payload: status
+  } as const;
+};

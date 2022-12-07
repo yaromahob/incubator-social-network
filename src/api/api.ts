@@ -18,10 +18,21 @@ export const usersAPI = {
     return instance.delete(`follow/${userID}`);
   },
   getProfileUser(userID: number) {
-    return instance.get(`profile/${userID}`);
+    console.warn('deprecated method. Use profileApi');
+    return profileAPI.getProfileUser(userID);
   },
   authMe() {
     return instance.get(`auth/me`);
   },
-  
+};
+export const profileAPI = {
+  getProfileUser(userID: number) {
+    return instance.get(`profile/${userID}`);
+  },
+  getStatusUser(userID: number) {
+    return instance.get(`profile/status/${userID}`);
+  },
+  updateStatus(newStatus: string) {
+    return instance.put(`profile/status`, {status: newStatus});
+  }
 };

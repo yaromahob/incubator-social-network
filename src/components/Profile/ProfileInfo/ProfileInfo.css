@@ -1,0 +1,21 @@
+.userInfoWrapper {
+  display: flex;
+  gap: 30px;
+}
+
+.aboutUserWrapper {
+  display: flex;
+  align-items: center;
+}
+
+
+.lookingJob {
+  display: flex;
+  gap: 20px;
+}
+
+.status {
+  display: flex;
+  margin: 20px 0;
+  gap: 10px;
+}

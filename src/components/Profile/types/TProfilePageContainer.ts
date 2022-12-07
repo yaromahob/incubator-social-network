@@ -8,6 +8,8 @@ export type mapDispatchToPropsType = {
   addPostAC: (post: string) => void
   addLikePostAC: (id: string) => void
   getProfileUserThunk: (userID: number) => void
+  getStatusUserThunk: (userID: number) => void
+  setStatusUserThunk: (status: string) => void
 }
 
 export type TProfileClassPropsType = TProfilePage & mapDispatchToPropsType

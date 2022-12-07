@@ -2,6 +2,7 @@ export type TProfilePage = {
   userPosts: TUserPost[]
   newPost: string
   profile: TProfileResponse
+  status: string
 }
 
 export type TProfileResponse = {

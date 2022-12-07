@@ -1,0 +1,16 @@
+.user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+
+.user-info img {
+  width: 120px;
+  height: 120px;
+  margin: 20px;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column-reverse;
+}
