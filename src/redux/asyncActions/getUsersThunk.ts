@@ -69,7 +69,7 @@ export const authMeThunk = (): AppThunk => {
 export const getStatusUserThunk = (userID: number): AppThunk => {
   return (dispatch: Dispatch<AppActionsType>) => {
     profileAPI.getStatusUser(userID).then(response => {
-      // dispatch(getStatusAC(response.data));
+      dispatch(getStatusAC(response.data));
     });
   };
 };

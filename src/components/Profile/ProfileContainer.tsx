@@ -1,6 +1,6 @@
 import React from 'react';
 import Profile from "./Profile/Profile";
-import {addLikePostAC, addPostAC, updatePostTextAC} from "../../redux/actions/profileAC";
+import {addLikePostAC, addPostAC, setStatusAC, updatePostTextAC} from "../../redux/actions/profileAC";
 import {AppStateType} from "../../redux/redux-store";
 import {connect} from "react-redux";
 import {TProfilePage} from "../../redux/reducers/types/TProfile";
@@ -50,6 +50,7 @@ export default compose<React.ComponentType>(
       updatePostTextAC,
       addPostAC,
       addLikePostAC,
+      setStatusAC,
       getProfileUserThunk,
       getStatusUserThunk,
       setStatusUserThunk

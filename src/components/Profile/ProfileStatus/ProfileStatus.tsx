@@ -8,6 +8,7 @@ type TProfileStatus = {
 }
 
 const ProfileStatus: React.FC<TProfileStatus> = ({status, onEdit, editModeHandler, changeStatus}) => {
+  
   const editHandler = () => {
     editModeHandler(!onEdit);
   };

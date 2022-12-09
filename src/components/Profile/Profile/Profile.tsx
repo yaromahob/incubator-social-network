@@ -17,7 +17,6 @@ const Profile: React.FC<TProfile> = (props) => {
   const addLikeHandler = (id: string) => {
     props.addLikePostAC(id);
   };
-  
   return (
     <div>
       <div>

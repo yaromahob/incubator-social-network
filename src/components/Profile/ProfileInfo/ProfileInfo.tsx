@@ -1,4 +1,4 @@
-import React, {ChangeEvent} from 'react';
+import React, {ChangeEvent, useEffect} from 'react';
 import {v1} from 'uuid';
 import {TProfileInfoPropsType} from "../types/TProfileInfo";
 import './ProfileInfo.css';
@@ -18,6 +18,10 @@ const ProfileInfo: React.FC<TProfileInfoPropsType> = (props) => {
       }
     </li>
     : null);
+  useEffect(() => {
+    setStatus(props.status);
+  }, [props.status]);
+  
   const changeStatus = (e: ChangeEvent<HTMLInputElement>) => {
     setStatus(e.target.value);
   };

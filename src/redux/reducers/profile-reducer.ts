@@ -32,7 +32,7 @@ const initialState: TProfilePage = {
       large: 'https://www.svgrepo.com/show/5125/avatar.svg'
     }
   },
-  status: 'ALLO DAROVA'
+  status: ''
 };
 
 export const profileReducer = (state: TProfilePage = initialState, action: ProfileActionsType): TProfilePage => {
@@ -68,6 +68,7 @@ export const profileReducer = (state: TProfilePage = initialState, action: Profi
     }
     
     case "SET-STATUS": {
+      console.log(action.payload);
       return {
         ...state, status: action.payload
       };
