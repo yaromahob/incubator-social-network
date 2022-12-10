@@ -1,3 +1,5 @@
+import {FormStateMap} from "redux-form";
+
 export type TProfilePage = {
   userPosts: TUserPost[]
   newPost: string

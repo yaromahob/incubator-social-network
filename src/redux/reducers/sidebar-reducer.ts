@@ -11,18 +11,12 @@ const initialState: TSidebar = {
       folder: 'Users',
       directory: '/users'
     },
-    {
-      folder: 'News',
-      directory: '/news'
-    },
+    
     {
       folder: 'Messages',
       directory: '/messages'
     },
-    {
-      folder: 'Music',
-      directory: '/music'
-    },
+  
   ]
 };
 

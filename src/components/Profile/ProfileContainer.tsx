@@ -16,7 +16,7 @@ let mapStateToProps = (state: AppStateType): TProfilePage => {
     userPosts: state.profilePage.userPosts,
     newPost: state.profilePage.newPost,
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
   };
 };
 

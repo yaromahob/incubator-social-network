@@ -22,7 +22,6 @@ const App: React.FC = () => {
         <Navigation sidebarMenu={state.sidebar.sidebarMenu}/>
         <div className="content-body">
           <Route path="/profile/:userId?"
-            // TS2604: JSX element type 'ProfileContainer' does not have any construct or call signatures.
                  render={() => <ProfileContainer/>}
           />
           <Route path="/users"
@@ -31,10 +30,7 @@ const App: React.FC = () => {
           <Route path="/messages"
                  render={() => <Messages
                    state={state.messagesPage}/>}/>
-          <Route path="/news"
-                 render={() => <News/>}/>
-          <Route path="/music"
-                 render={() => <Music/>}/>
+          
           <Route path="/login"
                  render={() => <Login/>}/>
         </div>
